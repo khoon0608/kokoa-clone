@@ -1,5 +1,6 @@
 #chat-screen {
   background-color: #abc1d1;
+  height: 500vh;
 }
 
 #chat-screen .alt-header,
@@ -20,6 +21,17 @@
   z-index: 1;
 }
 
+@keyframes fadeDownToUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
 .main-chat {
   margin-top: 100px;
   display: flex;
@@ -28,6 +40,7 @@
 }
 
 .chats__timestamp {
+  animation: fadeDownToUp 0.8s linear;
   color: white;
   background-color: #92a4b2;
   padding: 15px;
@@ -74,8 +87,34 @@
   opacity: 0.8;
 }
 
+@keyframes fadeLeftToRight {
+  from {
+    opacity: 0;
+    transform: translateX(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.message-row--other .message__info--other {
+  animation: fadeLeftToRight 1s linear;
+}
+
 .message-row--own {
   justify-content: flex-end;
+}
+
+@keyframes fadeRightToLeft {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .message-row--own .message__bubble {
@@ -90,6 +129,10 @@
   flex-direction: row-reverse;
 }
 
+.message-row--own .message__info--own {
+  animation: fadeRightToLeft 1s linear;
+}
+
 .reply {
   position: fixed;
   bottom: 0;
@@ -100,7 +143,9 @@
   padding: 5px 25px;
   align-items: center;
   box-sizing: border-box;
+  transition: all 0.3s ease-in-out;
 }
+
 .reply .reply__column:first-child {
   width: 10%;
 }
@@ -120,6 +165,16 @@
   width: 100%;
   border: var(--main--border);
   border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.reply:focus input {
+  width: 90vw;
+  transform: translateX(-13%) translateY(-80px);
+}
+
+.reply:focus-within {
+  transform: translateY(80px);
 }
 
 .reply__column:last-child > i,
@@ -149,4 +204,16 @@
 .reply__column button:active,
 .reply__column button:focus {
   outline: none;
+}
+
+.reply .reply__column:first-child,
+.reply .fa-smile,
+.reply button {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.reply:focus-within .reply__column:first-child,
+.reply:focus-within .fa-smile,
+.reply:focus-within button {
+  opacity: 0;
 }
