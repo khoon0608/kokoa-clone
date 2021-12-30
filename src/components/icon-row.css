@@ -1,13 +1,22 @@
 .icon-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin-bottom: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .icon-row__icon {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 20%;
+  padding: 10px 0px;
+}
+
+.icon-row__icon:hover {
+  background-color: var(--background);
+  color: var(--red);
 }
 
 .icon-row__icon i {
@@ -17,4 +26,5 @@
 .icon-row__icon span {
   margin-top: 18px;
   text-align: center;
+  font-size: 10px;
 }

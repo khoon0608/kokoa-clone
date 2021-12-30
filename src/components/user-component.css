@@ -8,7 +8,12 @@
   align-items: center;
 }
 
+.user-component__column {
+  padding: 5px 15px;
+}
+
 .user-component:first-child:hover {
+  border-radius: 15px;
   background-color: #c3cdcc;
 }
 
